@@ -62,27 +62,33 @@ The seven output classes, in the palette the models actually predict:
 ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-**Data**
+**Backend & data**
 
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=black)
 ![Firebase](https://img.shields.io/badge/Firebase-DD2C00?style=flat-square&logo=firebase&logoColor=white)
 
-**ML & Infra**
+**ML**
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+
+**Ship it**
+
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Google Cloud Run](https://img.shields.io/badge/Cloud%20Run-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?style=flat-square&logo=gitlab&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
 ### Selected work
 
-- **[lulc_cei](https://github.com/Leng201202/lulc_cei)** — The segmentation research above. PyTorch, five architectures, a shared label taxonomy as the single source of truth for both mappings and the palette.
-- **[Portfolio](https://github.com/Guanjie003/Portfolio)** — My personal site, built in TypeScript. Design, build and deploy, end to end.
-- **[final-project-mfu-news](https://github.com/Guanjie003/final-project-mfu-news)** — University news portal: JavaScript front end over a Java back end.
+- **[lulc_cei](https://github.com/Leng201202/lulc_cei)** — The segmentation research above. PyTorch; a shared label taxonomy module is the single source of truth for both domain mappings and the output palette, so the loader, the metrics and the prediction colours can never drift apart.
+- **[Portfolio](https://github.com/Guanjie003/Portfolio)** — My personal site. Next.js 15, React 19, TypeScript and Tailwind, with no other runtime dependencies — sitemap, robots and OG images generated from the route tree.
+- **[final-project-mfu-news](https://github.com/Guanjie003/final-project-mfu-news)** — University activity-news portal. Maven multi-module Spring Boot 3.3 back end over JPA, deployed to Google Cloud Run from a GitHub Actions workflow.
 
 ### Languages
 
