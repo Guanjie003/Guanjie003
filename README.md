@@ -8,33 +8,39 @@ Based in Chiang Rai, Thailand.
 
 ### Currently
 
-Researching **semantic segmentation of satellite imagery** for land use / land cover
-classification — training UNetFormer and FT-UNetFormer to turn raw tiles into class maps.
+**Cross-domain land use / land cover segmentation.** Training on [OpenEarthMap](https://open-earth-map.org/)
+and IRSA-Map, remapping both 8-class label spaces onto a 7-class CEI land-cover scheme, then
+benchmarking five architectures on the target domain. Ambiguous source classes — OEM's developed
+space, IRSA's sport surfaces — go to `ignore_index` rather than being folded into bare ground,
+so they contribute no loss signal instead of teaching a wrong association.
 
 ```mermaid
 flowchart LR
-    A["🛰️ Satellite<br/>imagery"] --> B["Tiling &<br/>augmentation"]
-    B --> C["UNetFormer /<br/>FT-UNetFormer"]
-    C --> D["Land cover<br/>map"]
-    D --> V["Vegetation"]
-    D --> W["Water"]
-    D --> U["Built-up"]
-    D --> S["Barren"]
+    OEM["OpenEarthMap<br/>8 classes"] --> MAP
+    IRSA["IRSA-Map<br/>8 classes"] --> MAP
+    MAP["Label remap<br/>to CEI 7-class"] --> TR
+    TR["Train<br/>CE + Dice · AdamW · AMP"] --> MODELS
+    MODELS["FT-UNetFormer (Swin-B)<br/>UNetFormer (R101)<br/>UNet (EfficientNet-B4)<br/>UperNet (Swin-B)<br/>SegFormer (MiT-B5)"] --> EVAL
+    EVAL["Evaluate on CEI<br/>OA · mIoU · mF1"]
 
+    classDef data  fill:#0b3d2e,stroke:#052018,stroke-width:2px,color:#ffffff
     classDef step  fill:#1d6d4a,stroke:#0b3d2e,stroke-width:2px,color:#ffffff
     classDef model fill:#0ea5e9,stroke:#075985,stroke-width:2px,color:#ffffff
-    classDef veg   fill:#4ca64c,stroke:#2f6b2f,color:#ffffff
-    classDef water fill:#3b82f6,stroke:#1e40af,color:#ffffff
-    classDef built fill:#dc2626,stroke:#7f1d1d,color:#ffffff
-    classDef bare  fill:#d97706,stroke:#92400e,color:#ffffff
 
-    class A,B,D step
-    class C model
-    class V veg
-    class W water
-    class U built
-    class S bare
+    class OEM,IRSA data
+    class MAP,TR,EVAL step
+    class MODELS model
 ```
+
+The seven output classes, in the palette the models actually predict:
+
+![Rangeland](https://img.shields.io/badge/Rangeland-00FF24?style=flat-square)
+![Agriculture](https://img.shields.io/badge/Agriculture-4BB549?style=flat-square)
+![Tree](https://img.shields.io/badge/Tree-226126?style=flat-square)
+![Water](https://img.shields.io/badge/Water-0045FF?style=flat-square)
+![Building](https://img.shields.io/badge/Building-DE1F07?style=flat-square)
+![Road](https://img.shields.io/badge/Road-FFFFFF?style=flat-square)
+![Non-vegetated](https://img.shields.io/badge/Non--vegetated-800000?style=flat-square)
 
 ### Working with
 
@@ -74,6 +80,7 @@ flowchart LR
 
 ### Selected work
 
+- **[lulc_cei](https://github.com/Leng201202/lulc_cei)** — The segmentation research above. PyTorch, five architectures, a shared label taxonomy as the single source of truth for both mappings and the palette.
 - **[Portfolio](https://github.com/Guanjie003/Portfolio)** — My personal site, built in TypeScript. Design, build and deploy, end to end.
 - **[final-project-mfu-news](https://github.com/Guanjie003/final-project-mfu-news)** — University news portal: JavaScript front end over a Java back end.
 
